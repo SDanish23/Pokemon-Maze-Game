@@ -3,12 +3,23 @@
 
 A fun, interactive maze game built with HTML, CSS, and JavaScript — themed around the world of Pokémon! Your goal is to navigate the maze, reach the Pokémon, and *catch 'em all*! 🕹️⚡
 
+### 🎮 How It Works
+- When the game loads, a new maze is generated automatically.
+- A random Pokémon appears at the end of the maze.
+- Use arrow keys or WASD to move the player (a Pokéball).
+- On mobile, you can swipe in any direction to move.
+- Reach the Pokémon to catch it — and enjoy a fun “Gotcha! Pokémon was caught!” animation.
+- The number of steps you took is also shown when you win.
+- Click "Play Again?" to start fresh with a new maze and Pokémon!
+
 ### 🚀 Features
-- Maze generation with adjustable difficulty (Easy, Medium, Hard)
-- Keyboard and touch support (Arrow keys / WASD / swipe)
-- Pokéball player and randomized Pokémon sprites at the maze end
-- Winning message classic “Gotcha! Pokémon was caught!” message
-- Responsive design for desktop and mobile
+- 🔄 Random maze generated every time you start
+- 🎲 Random Pokémon shown at the maze exit
+- 🧠 Three difficulty levels: Easy, Medium, and Hard
+- On mobile, you can swipe in any direction to move.
+- The number of steps you took is also shown when you win.
+- Click "Play Again?" to start fresh with a new maze and Pokémon!
+
 
 ### 🛠️ Built With
 - HTML5  
