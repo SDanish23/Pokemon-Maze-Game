@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="maze.css">
+</head>
+
+<body>
+    <div id="page">
+
+        <div id="Message-Container">
+            <div id="message">
+                <h1>Gotcha..!!!</h1>
+                <p>Pokémon was caught!</p>
+                <p id="moves"></p>
+                <button id="okBtn" type="button" onclick="toggleVisablity('Message-Container'); makeMaze();"
+                    value="Cool!">Play Again?</button>
+                <div class="modal-footer">
+                    <h3 id="movecount" onmouseover="">Cool!!</h3>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="menu">
+            <div class="custom-select">
+                <select id="diffSelect">
+                    <option value="10" class="opt">Easy</option>
+                    <option value="15" class="opt">Medium</option>
+                    <option value="22" class="opt">Hard</option>
+                </select>
+            </div>
+
+            <span class="strt">
+                <button class="glow-on-hover" id="startMazeBtn" onclick="makeMaze()" value="Start">Start</button>
+            </span>
+        </div>
+
+        <div id="view">
+            <div id="instructions">
+                <h2>Game Instructions</h2>
+                <p>
+                    Use arrow keys or WASD to move the player.<br><br>
+                    Swipe on touch devices to move.<br><br>
+                    Reach the Pokémon to win the game.<br><br>
+                    Select difficulty and click Start to begin.<br><br>
+                    Try to complete the maze in as few moves as possible.<br><br>
+                </p>
+            </div>
+            <div id="mazeContainer">
+                <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+
+    <!-- Preload game images -->
+    <link rel="preload" href="image/pokeball.png" as="image">
+    <link rel="preload" href="image/pokemon.png" as="image">
+    <script src="maze.js"></script>
+</body>
+
+</html>

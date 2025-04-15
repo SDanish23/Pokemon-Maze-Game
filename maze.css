@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+
+
+#mazeContainer {
+    top: 15px;
+    opacity: 1;
+    /* Make sure visible */
+    display: block;
+    margin: 0 auto;
+    /* Center horizontally */
+    border-radius: 10px;
+    transition: opacity 0.5s ease;
+    flex-shrink: 0;
+    height: 400px;
+    width: 400px;
+}
+
+#instructions {
+    margin-left: 8%;
+    margin-right: -28%;
+    max-width: 300px;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    color: #333;
+    height: fit-content;
+
+}
+
+#mazeContainer #mazeCanvas {
+    margin: 0;
+    display: block;
+    border: solid 4px #3a4a6d;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    height: 400px;
+    background-color: #fff;
+}
+
+button,
+select {
+    cursor: pointer;
+    background: linear-gradient(to right, #3a4a6d, #4a6baf) !important;
+    height: 45px;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    display: inline-block;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    appearance: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+button:hover,
+select:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+}
+
+button:active,
+select:active {
+    transform: translateY(1px);
+}
+
+button:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(58, 74, 109, 0.3);
+}
+
+.custom-select {
+    display: inline-block;
+    position: relative;
+    margin: 0 10px;
+}
+
+.custom-select::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 30%;
+    /* Adjust as needed */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    /* Arrow color */
+    pointer-events: none;
+    /* Prevent interaction */
+}
+
+.custom-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: rgb(255, 255, 255);
+    padding-right: 30px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+}
+
+select option {
+    background-color: #3a4a6d;
+}
+
+#Message-Container {
+    visibility: hidden;
+    color: #3a4a6d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 215, 0, 0.9);
+    /* Changed to a golden translucent background */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 30px 10px rgba(255, 215, 0, 0.7);
+    /* Added glowing shadow */
+    z-index: 1000;
+    /* Increased z-index to stand out */
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+#Message-Container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center,
+            rgba(255, 215, 0, 0.2) 0%,
+            rgba(255, 165, 0, 0.1) 50%,
+            transparent 70%);
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+#Message-Container #message {
+    width: 380px;
+    height: 380px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff8dc;
+    /* Changed to a light golden background */
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 0 30px 10px rgba(255, 215, 0, 0.7);
+    /* Added glowing shadow */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #ffd700;
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+#Message-Container #message h1 {
+    color: #3a4a6d;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#Message-Container #message p {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+#Message-Container #message button {
+    width: 120px;
+    margin-top: 20px;
+}
+
+#page {
+    text-align: center;
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#page #menu {
+    margin: auto;
+    padding: 10px;
+    height: 65px;
+    box-sizing: border-box;
+}
+
+#page #menu h1 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 3.2rem;
+    color: #3a4a6d;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#page #view {
+    width: 100%;
+    height: calc(100vh - 95px);
+    /* Set height for flexbox */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.border {
+    border: 10px solid #3a4a6d;
+    border-radius: 15px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Responsive layout for tablets and smaller devices */
+@media only screen and (max-width: 768px) {
+    #view {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    #mazeContainer {
+        width: 90vw;
+        height: auto;
+        max-width: 400px;
+    }
+
+    #mazeContainer #mazeCanvas {
+        height: auto;
+        max-width: 100%;
+    }
+
+    #instructions {
+        max-width: 90vw;
+        width: auto;
+        margin: 0;
+        padding: 15px;
+        height: auto;
+    }
+
+    button,
+    select {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Extra small devices (phones, 400px and down) */
+@media only screen and (max-width: 400px) {
+
+    input,
+    select {
+        width: 120px;
+    }
+}
